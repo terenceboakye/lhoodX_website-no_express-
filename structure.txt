@@ -1,0 +1,35 @@
+/*
+*@desc  :   this is the structure of the projects from their 
+*            parents folder down to the respective files
+*
+*@note  :   The words with (---) are folders
+*
+@date   :   Tues, 7th January, 2025
+*           time(5:30:00 AM)
+*/
+
+.
+.
+|____main.js
+|____router.js
+|____public
+| |____css-----
+| | |____confetti_cuisine.css
+| | |____bootstrap.css
+| |____images
+| | |____product.jpg
+| | |____graph.png
+| | |____cat.jpg
+| | |____people.jpg
+| |____js-------
+| | |____confettiCuisine.js
+|____package-lock.json
+|____package.json
+|____contentTypes.js
+|____utils.js
+|____view---------
+| |____index.html
+| |____contact.html
+| |____courses.html
+| |____thanks.html
+| |____error.html
