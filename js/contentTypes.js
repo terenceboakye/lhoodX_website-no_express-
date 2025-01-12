@@ -1,11 +1,11 @@
 //@desc :   mapping filetypes to their headers values for usage during responses
 
-modules.exports = {
+module.exports = {
 //html files
     html: {
         "Content-Type": "text/html"
     },
-//text files
+//text 
     text :{
         "Content-Type": "text/plain"
     },
