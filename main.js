@@ -19,11 +19,11 @@
 
 //port number
 const port = 3000, 
-    http = require('http'), //http module
-    httpStatus =require("http-status-codes"),
-    router = require("./router"),
-    contentsType = require("./contentType");
-    utils = require("./utils");
+    http = require('http'), 
+    httpStatus = require('http-status-codes'),
+    router = require('./js/router'),
+    contentsType = require("./js/contentTypes"),
+    utils = require("./js/utils");
 
 
 //Registering individual routes with the router module\
@@ -31,37 +31,31 @@ const port = 3000,
 //--for Homepage
 router.get("/", (req, res) => {
     res.writeHead(200, contentsType.html);
-    utils.getFile("views/home.html", res);
+    utils.getFile("view/index.html", res);
 });
 
 //--for course
-router.get("/menu", (req, res) => {
+router.get("/courses.html", (req, res) => {
     res.writeHead(200, contentsType.html);
-    utils.getFile("views/courses.html", res);
-});
-
-//---for About
-router.get("/about", (req, res) => {
-    res.writeHead(200, contentsType.html);
-    utils.getFile("views/about.html", res);
+    utils.getFile("view/courses.html", res);
 });
 
 //---for Contact
-router.get("/contact", (req, res) => {
+router.get("/contact.html", (req, res) => {
     res.writeHead(200, contentsType.html);
-    utils.getFile("views/contact.html", res);
+    utils.getFile("view/contact.html", res);
 });
 
 //--for Thanks after form submission
-router.post("/", (req, res) => {
+router.post("/submit", (req, res) => {
     res.writeHead(200, contentsType.html);
-    utils.getFile("views/thanks.html", res);
+    utils.getFile("view/thanks.html", res);
 });
 
 //--css
 router.get("/styles.css", (req, res) => {
     res.writeHead(200, contentsType.css);
-    utils.getFile("views/css/styles.css", res);
+    utils.getFile("./css/styles.css", res);
 });
 
 //Starting the server...
