@@ -15,7 +15,8 @@
 */
 
 const htmlContentType = {"Content-Type": "text/html"},
-    utils = require("/utils"),
+    utils = require("./utils"),
+    contentTypes = require("./contentTypes")
     httpStatus = require("http-status-codes");
 
 //-1-rRoutes objects to hold routes functions
@@ -23,10 +24,28 @@ const htmlContentType = {"Content-Type": "text/html"},
 const routes = {
   
     //---GET routes
-    "GET":{},
+    "GET":{
+ /*       "/": (req, res) => {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "text/html");
+            
+            //get the home page
+            utils.getFile("view/home.html", res);
+        }    
+   */ },
 
     //---POST routes
-    "POST": {}
+    "POST": {
+ /*       "/users": (req, res) => {
+            
+        //handles post request for the users url
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "text/html");
+            
+            //displays a thanks message
+            utils.getFile("view/thanks.html", res);
+        }    
+  */  }
 
 };
 
@@ -34,12 +53,21 @@ const routes = {
 exports.handle =(req, res) => {
 
     try{
-        route[method][req.url](req, res);
+        if(routes[req.method][req.url]) {
+            routes[req.method][req.url](req, res);
+        } 
+        else {
+            res.statusCode = 404;
+            res.end("<h1>No such file exists<br>404 Not Found</h1>");
+        }
     }
+
     catch(e){
-        res.setHeader(httpStatus.OK, contentTypes.html);
+        res.writeHead(httpStatus.OK, contentTypes.html);
         utils.getFile("view/error.html", res);
 
+    //error
+        console.error(e);
     }
 };
 
@@ -47,12 +75,12 @@ exports.handle =(req, res) => {
 
 //--GET
 exports.get = (url, action) => {
-    routes[GET][url] = action ;
-};ini
+    routes["GET"][url] = action ;
+};
 
 //--POST
 exports.post = (url, action) => {
-    routes[POST][url] = action ;
+    routes["POST"][url] = action ;
 };
 
 
