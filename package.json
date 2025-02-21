@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/terenceboakye/food_website/issues"
   },
-  "homepage": "https://github.com/terenceboakye/food_website#readme"
+  "homepage": "https://github.com/terenceboakye/food_website#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
